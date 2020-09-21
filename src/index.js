@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import React from "react";
+import App from "./components/App";
 
 // test proxy to express server @ 4000
 fetch("/api/notes")
@@ -8,4 +9,4 @@ fetch("/api/notes")
   })
   .then((json) => console.warn("Notes from the database: ", json));
 
-ReactDOM.render(<h1>Hello Assessment!</h1>, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
