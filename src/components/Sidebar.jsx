@@ -4,7 +4,12 @@ import SidebarNote from "./SidebarNote";
 export default function Sidebar() {
   function renderNotes() {
     return notes.map((note) => (
-      <SidebarNote key={note.id} title={note.title} body={note.body} />
+      <SidebarNote
+        key={note.id}
+        title={note.title}
+        id={note.id}
+        body={note.body}
+      />
     ));
   }
 
