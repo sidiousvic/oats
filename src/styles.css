@@ -1,0 +1,62 @@
+body {
+  height: 100vh;
+  display: flex;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#app {
+  background: linear-gradient(45deg, #fff, greenyellow 50%, #000);
+  background-size: 2px 2px;
+  font-family: "Neue Machina";
+  height: 80%;
+  width: 80%;
+  border: 2px solid black;
+  box-shadow: 10px 10px black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#sidebar {
+  height: 90%;
+  width: 40%;
+  background-color: greenyellow;
+  border: 2px solid black;
+  box-shadow: 5px 5px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sidebar-note {
+  background-color: #111;
+  color: whitesmoke;
+  font-size: 0.6rem;
+  margin: 5%;
+  padding: 5px;
+  border: 2px solid black;
+  width: 85%;
+}
+
+.sidebar-note:hover {
+  background-color: whitesmoke;
+  color: black;
+  cursor: pointer;
+}
+
+#note {
+  height: 90%;
+  width: 40%;
+  background-color: white;
+  border: 2px solid black;
+  box-shadow: 5px 5px black;
+}
