@@ -37,6 +37,11 @@ body {
   justify-content: flex-start;
 }
 
+#sidebar-add-note-button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 .sidebar-note {
   background-color: #111;
   color: whitesmoke;
