@@ -12,6 +12,10 @@ app.use("/api", express.json(), express.urlencoded({ extended: true }), api);
 
 app.use(express.static(path.join(__dirname, "../build")));
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
 module.exports = app;
 
 /* Questions
