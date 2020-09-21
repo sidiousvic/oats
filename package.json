@@ -14,7 +14,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix --ext .js,.jsx ."
+    "lint": "eslint --fix --ext .js,.jsx .",
+    "migrate": "knex migrate:latest --knexfile models/knexfile.js",
+    "seed": "knex seed:run --knexfile models/knexfile.js"
   },
   "eslintConfig": {
     "extends": "react-app"
