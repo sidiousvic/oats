@@ -1,5 +1,8 @@
 /* You may need to fix this file? */
 require("dotenv").config();
+const path = require("path");
+const MIGRATION_DIR = path.resolve(__dirname + "/migrations");
+const SEED_DIR = path.resolve(__dirname + "/seeds");
 const DATABASE_USER = process.env.DB_USER;
 const DATABASE_HOST = "127.0.0.1";
 const DATABASE_PORT = "5432";
@@ -20,10 +23,10 @@ module.exports = {
   },
   migrations: {
     tableName: "knex_migrations",
-    directory: "./migrations",
+    directory: MIGRATION_DIR,
   },
   seeds: {
-    directory: "./seeds",
+    directory: SEED_DIR,
   },
 };
 
