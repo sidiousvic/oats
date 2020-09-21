@@ -23,11 +23,13 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+  padding: 0 5%;
 }
 
 #sidebar {
-  height: 90%;
-  width: 40%;
+  transform: skewX(-5deg);
+  height: 80%;
+  width: 30%;
   background-color: greenyellow;
   border: 2px solid black;
   box-shadow: 5px 5px black;
@@ -35,11 +37,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  padding: 3% 0;
 }
 
-#sidebar-add-note-button:hover {
-  transform: scale(1.1);
-  cursor: pointer;
+#sidebar-note-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow: scroll;
 }
 
 .sidebar-note {
@@ -47,9 +53,19 @@ body {
   color: whitesmoke;
   font-size: 0.6rem;
   margin: 5%;
-  padding: 5px;
+  padding: 10px;
   border: 2px solid black;
-  width: 85%;
+  width: 67%;
+  outline: none;
+}
+
+.active-note {
+  background-color: whitesmoke;
+  color: black;
+  cursor: pointer;
+  border: 2px solid lime;
+  box-shadow: 5px 5px black;
+  overflow-wrap: break-word;
 }
 
 .sidebar-note:hover {
@@ -58,10 +74,70 @@ body {
   cursor: pointer;
 }
 
+.sidebar-add-note-button {
+  width: fit-content;
+  text-align: center;
+  filter: grayscale(100%);
+  font-size: 1rem;
+}
+.sidebar-add-note-button p {
+  margin: 0.3rem;
+}
+.sidebar-add-note-button:hover {
+  cursor: pointer;
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+.sidebar-add-note-button:focus {
+  outline: none;
+}
+
+#sidebar-add-note-button {
+  font-size: 2rem;
+  font-weight: 900;
+}
+#sidebar-add-note-button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+#sidebar-add-note-button p {
+  margin: 0;
+}
+
+#sidebar-add-note-button:focus {
+  outline: none;
+}
+
 #note {
   height: 90%;
   width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   background-color: white;
   border: 2px solid black;
   box-shadow: 5px 5px black;
+}
+
+textarea {
+  font-family: "Neue Machina";
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+}
+
+#note-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  height: 10%;
+}
+
+#note-body {
+  font-weight: 500;
+  height: 85%;
 }
