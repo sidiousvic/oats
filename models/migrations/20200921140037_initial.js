@@ -5,6 +5,9 @@ exports.up = function(knex) {
       t.string("id");
       t.string("title").notNull();
       t.string("body");
+      t.datetime("timestamp", { precision: 6 })
+        .defaultTo(knex.fn.now(6))
+        .notNull();
     }),
   ]);
 };
