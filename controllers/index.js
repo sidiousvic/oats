@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const db = require("../models/db");
 
-router.get("/hello", (_, res) => {
-  res.send({ express: "I'm here! 👽👍🏼🔥" });
+router.get("/notes", async (_, res) => {
+  const notes = await db.select().from("notes");
+  res.send(notes);
 });
 
 module.exports = router;
