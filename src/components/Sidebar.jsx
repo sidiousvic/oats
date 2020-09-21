@@ -1,52 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SidebarNote from "./SidebarNote";
-import axios from "axios";
 
-export default function Sidebar() {
+export default function Sidebar({
+  addNote,
+  deleteNote,
+  notes,
+  saving,
+  activeNote,
+  setActiveNote,
+}) {
   function renderNotes() {
     return notes.map((note) => (
       <SidebarNote
-        deleteNote={deleteNote}
+        saving={saving}
         key={note.id}
-        title={note.title}
-        id={note.id}
-        body={note.body}
+        activeNote={activeNote}
+        setActiveNote={setActiveNote}
+        deleteNote={deleteNote}
+        note={note}
       />
     ));
   }
-
-  const [notes, setNotes] = useState([]);
-
-  async function getNotes() {
-    const response = await fetch("/api/notes");
-    const notes = await response.json();
-    setNotes(notes);
-    return notes;
-  }
-
-  async function addNote() {
-    const newNote = {
-      title: "New note.",
-      body: "This is a new note.",
-    };
-    await axios.post(`api/notes`, newNote);
-    const newNotes = await getNotes();
-    setNotes(newNotes);
-  }
-
-  function deleteNote(id) {
-    axios.delete(`api/notes/${id}`);
-    const newNotes = notes.filter((note) => note.id !== id);
-    setNotes(newNotes);
-  }
-
-  useEffect(() => {
-    getNotes();
-  }, []);
-
   return (
-    <div id="sidebar">
-      {renderNotes()}
+    <>
+      <div id="sidebar">
+        <h1 id="sidebar-title">Notes</h1>
+        <div id="sidebar-note-list">{renderNotes()}</div>
+      </div>
       <div
         role="button"
         tabIndex="0"
@@ -56,10 +36,10 @@ export default function Sidebar() {
       >
         <p>
           <span role="img" aria-label="delete button">
-            ➕
+            +
           </span>
         </p>
       </div>
-    </div>
+    </>
   );
 }
