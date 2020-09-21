@@ -1,11 +1,10 @@
 /* You may need to fix this file? */
-
+require("dotenv").config();
 const DATABASE_USER = process.env.DB_USER;
 const DATABASE_HOST = "127.0.0.1";
 const DATABASE_PORT = "5432";
 const DATABASE_URL =
-  process.env.DB_URL ||
-  `postgres://${process.env.DB_USER}@127.0.0.1:5432/notes_app`;
+  process.env.DB_URL || `postgres://${process.env.DB_USER}@127.0.0.1:5432/oats`;
 
 module.exports = {
   client: "pg",
