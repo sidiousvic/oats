@@ -19,6 +19,9 @@
     "seed": "knex seed:run --knexfile models/knexfile.js",
     "rollback": "knex migrate:rollback --knexfile models/knexfile.js"
   },
+  "resolutions": {
+    "@babel/preset-env": "7.5.5"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -43,6 +46,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.20.0",
     "express": "^4.16.2",
     "knex": "^0.20.9",
     "moment": "^2.20.1",
