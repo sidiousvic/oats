@@ -1,14 +1,14 @@
 [
   {
     "title": "I walked the dog today",
-    "text": "Yes I did!"
+    "body": "Yes I did!"
   },
   {
     "title": "I like pizza",
-    "text": "Yes I do!"
+    "body": "Yes I do!"
   },
   {
     "title": "I am bored",
-    "text": "Yes I am."
+    "body": "Yes I am."
   }
 ]
