@@ -1,7 +1,6 @@
 /* You may need to fix this file? */
 
 const DATABASE_USER = process.env.DB_USER;
-const DATABASE_NAME = "notes_app";
 const DATABASE_HOST = "127.0.0.1";
 const DATABASE_PORT = "5432";
 const DATABASE_URL =

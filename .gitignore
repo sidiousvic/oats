@@ -25,3 +25,4 @@ production-server/
 junit/
 client/dist/bundle.js
 build/
+.env
