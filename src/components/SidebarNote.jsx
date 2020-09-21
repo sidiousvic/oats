@@ -1,13 +1,8 @@
 import React from "react";
-import axios from "axios";
 
-export default function Note({ title, body, id }) {
-  function deleteNote(id) {
-    axios.delete(`api/notes/${id}`);
-  }
-
+export default function Note({ title, body, id, deleteNote }) {
   return (
-    <div className="sidebar-note">
+    <div note-id={id} className="sidebar-note">
       <h1>{title}</h1>
       <p>{body}</p>
       <div
