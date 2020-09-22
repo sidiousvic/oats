@@ -24,7 +24,7 @@ body {
   justify-content: space-evenly;
 }
 
-#app {
+#oats {
   background: linear-gradient(45deg, #fff, greenyellow 50%, #000);
   background-size: 2px 2px;
   font-family: "Neue Machina";
@@ -37,6 +37,7 @@ body {
   align-items: center;
   justify-content: space-evenly;
   padding: 0 5%;
+  flex-wrap: wrap;
 }
 
 #sidebar {
@@ -70,6 +71,7 @@ body {
   border: 2px solid black;
   width: 67%;
   outline: none;
+  overflow-wrap: break-word;
 }
 
 .active-note {
@@ -78,7 +80,6 @@ body {
   cursor: pointer;
   border: 2px solid lime;
   box-shadow: 5px 5px black;
-  overflow-wrap: break-word;
 }
 
 .sidebar-note:hover {
