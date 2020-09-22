@@ -13,7 +13,7 @@ export default function Oats() {
 
   useEffect(() => {
     async function getAndSetNotes() {
-      const notes = await axios.get("/notes");
+      const notes = await axios.get("oats/notes");
       setNotes(notes);
       const lastNote = notes[notes.length - 1];
       setActiveNote(lastNote);
