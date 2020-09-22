@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useRef } from "react";
-import EmojiButton from "./EmojiButton";
 
 export default function Note({ activeNote, NotesAPI }) {
   const { setActiveNote, updateNote } = NotesAPI;
@@ -17,8 +16,14 @@ export default function Note({ activeNote, NotesAPI }) {
 
   return (
     <>
-      <div id="note">
+      <div
+        id="note"
+        onBlur={() => {
+          updateNote(activeNote.id);
+        }}
+      >
         <textarea
+          disabled={!activeNote.id}
           ref={noteTitleRef}
           id="note-title"
           value={activeNote.title && activeNote.title}
@@ -31,6 +36,7 @@ export default function Note({ activeNote, NotesAPI }) {
           }}
         />
         <textarea
+          disabled={!activeNote.id}
           ref={noteBodyRef}
           id="note-body"
           value={activeNote.body && activeNote.body}
@@ -43,12 +49,6 @@ export default function Note({ activeNote, NotesAPI }) {
           }}
         />
       </div>
-      <EmojiButton
-        emoji={"💾"}
-        onClickHandler={() => {
-          updateNote(activeNote.id);
-        }}
-      />
     </>
   );
 }
