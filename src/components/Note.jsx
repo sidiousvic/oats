@@ -25,7 +25,6 @@ export default function Note({ activeNote }) {
         }}
       >
         <textarea
-          disabled={!activeNote.id}
           ref={noteTitleRef}
           id="note-title"
           value={activeNote.title && activeNote.title}
@@ -38,7 +37,6 @@ export default function Note({ activeNote }) {
           }}
         />
         <textarea
-          disabled={!activeNote.id}
           ref={noteBodyRef}
           id="note-body"
           value={activeNote.body && activeNote.body}
