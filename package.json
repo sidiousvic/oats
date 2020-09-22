@@ -6,6 +6,7 @@
   "author": "sidiousvic",
   "license": "UNLICENSED",
   "private": true,
+  "homepage": "https://sidiousvic.dev/oats",
   "proxy": "http://localhost:4000",
   "scripts": {
     "start": "pm2 start server/index.js",
