@@ -12,11 +12,3 @@ app.get("/", (_, res) => {
 });
 
 module.exports = app;
-
-/* Questions
-  1. What is morgan and why do you need it?
-  2. What is body parser?
-  3. What is "app.use(express.static(path.join(__dirname, '../build')));" doing?
-
-  Your Answer Here
-*/
