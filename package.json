@@ -1,14 +1,14 @@
 {
-  "name": "assessment.halfway-part-2",
+  "name": "oats",
   "version": "1.0.0",
-  "description": "Halfway Assessment",
+  "description": "A slick notes app.",
   "main": "index.js",
-  "author": "Yan Fan <theyanfan@gmail.com>",
+  "author": "sidiousvic",
   "license": "UNLICENSED",
   "private": true,
   "proxy": "http://localhost:4000",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "pm2 start server.js",
     "serve": "nodemon server/index.js",
     "dev": "react-scripts start",
     "build": "react-scripts build",
