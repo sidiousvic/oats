@@ -15,9 +15,9 @@ export default function Oats() {
     async function getAndSetNotes() {
       const response = await axios.get("/oats/notes");
       const notes = response.data;
-      setNotes(notes);
       const lastNote = notes[notes.length - 1];
       if (!activeNote.id) setActiveNote(lastNote);
+      setNotes(notes);
     }
     getAndSetNotes();
   }, [savedNotesAt, activeNote.id]);
