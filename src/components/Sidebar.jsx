@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { OatsContext } from "./Oats";
 import SidebarNotes from "./SidebarNotes";
-import EmojiButton from "./EmojiButton";
+import AddNoteButton from "./AddNoteButton";
 
 export default function Sidebar() {
   const { addNote } = useContext(OatsContext);
@@ -10,8 +10,8 @@ export default function Sidebar() {
       <div id="sidebar">
         <h1 id="sidebar-title">Notes</h1>
         <SidebarNotes />
+        <AddNoteButton emoji={"+"} onClickHandler={addNote} />
       </div>
-      <EmojiButton emoji={"+"} onClickHandler={addNote} />
     </>
   );
 }

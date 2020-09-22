@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import { OatsContext } from "./Oats";
 
 export default function SidebarNote({ note }) {
-  const { deleteNote, setActiveNote, savingNote, activeNote } = useContext(
-    OatsContext
-  );
+  const { deleteNote, setActiveNote, activeNote } = useContext(OatsContext);
 
   const isActiveNote = note.id === activeNote.id;
 
@@ -26,6 +24,7 @@ export default function SidebarNote({ note }) {
       tabIndex="0"
       note-id={note.id}
       className={`sidebar-note ${note.id === activeNote.id && "active-note"}`}
+      onFocus={() => {}} // TODO: Accessiblity
       onClick={() => {
         setActiveNote(note);
       }}
@@ -42,15 +41,16 @@ export default function SidebarNote({ note }) {
           : truncateWithEllipsis(note.body, 50)}
       </p>
       <div
+        id="delete-note-button"
         role="button"
         tabIndex="0"
-        className="sidebar-add-note-button"
+        className="button"
         onKeyDown={() => {}} // TODO: Accessiblity
         onClick={() => deleteNote(note.id)}
       >
         <p>
           <span role="img" aria-label="delete button">
-            ❌ {isActiveNote && savingNote && "💾"}
+            ❌
           </span>
         </p>
       </div>

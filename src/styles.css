@@ -35,7 +35,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 0 5%;
   flex-wrap: wrap;
 }
@@ -66,7 +66,7 @@ body {
   background-color: #111;
   color: whitesmoke;
   font-size: 0.6rem;
-  margin: 5%;
+  margin: 2.5%;
   padding: 10px;
   border: 2px solid black;
   width: 67%;
@@ -88,43 +88,53 @@ body {
   cursor: pointer;
 }
 
-.sidebar-add-note-button {
-  width: fit-content;
+.button {
+  font-weight: 900;
   text-align: center;
   filter: grayscale(100%);
-  font-size: 1rem;
+  font-size: 2rem;
+  width: fit-content;
 }
-.sidebar-add-note-button p {
+.button p {
   margin: 0.3rem;
 }
-.sidebar-add-note-button:hover {
+.button:hover {
   cursor: pointer;
   filter: grayscale(0%);
   transform: scale(1.1);
 }
-.sidebar-add-note-button:focus {
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.button:focus {
   outline: none;
 }
 
-#sidebar-add-note-button {
-  font-size: 2rem;
-  font-weight: 900;
+#delete-note-button {
+  font-size: 1rem;
 }
-#sidebar-add-note-button:hover {
+#delete-note-button:hover {
   cursor: pointer;
-  transform: scale(1.2);
-}
-#sidebar-add-note-button p {
-  margin: 0;
+  filter: grayscale(0%);
+  transform: none;
 }
 
-#sidebar-add-note-button:focus {
-  outline: none;
+#add-note-button:hover {
+  color: orangered;
+  animation: rotate 1s linear infinite;
+  transition: linear 100ms;
 }
 
 #note {
   height: 90%;
-  width: 40%;
+  width: 60%;
   display: flex;
   align-items: center;
   justify-content: center;
