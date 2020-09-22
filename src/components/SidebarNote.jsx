@@ -1,43 +1,57 @@
-import React from "react";
+import React, { useContext } from "react";
+import { OatsContext } from "./Oats";
 
-export default function SidebarNote({
-  note,
-  deleteNote,
-  activeNote,
-  setActiveNote,
-  savingNote,
-}) {
-  const { title, body, id } = note;
+export default function SidebarNote({ note }) {
+  console.log("SidebarNote rendered.");
+  const { deleteNote, setActiveNote, savingNote, activeNote } = useContext(
+    OatsContext
+  );
+
+  const isActiveNote = note.id === activeNote.id;
+
+  function ellipsize(string, limit) {
+    const isOverChar = (num) => string.length > num;
+    const ellipsis = isOverChar(limit) ? "..." : "";
+
+    return (
+      `${string
+        .split("")
+        .slice(0, limit)
+        .join("")}` + ellipsis
+    );
+  }
 
   return (
     <div
       role="button"
       tabIndex="0"
-      note-id={id}
-      className={`sidebar-note ${id === activeNote.id && "active-note"}`}
+      note-id={note.id}
+      className={`sidebar-note ${note.id === activeNote.id && "active-note"}`}
       onClick={() => {
         setActiveNote(note);
       }}
       onKeyDown={() => {}} // TODO: Accessiblity
     >
-      <h1>{title}</h1>
+      <h1>
+        {isActiveNote
+          ? ellipsize(activeNote.title, 25)
+          : ellipsize(note.title, 25)}
+      </h1>
       <p>
-        {`${body
-          .split("")
-          .slice(0, 50)
-          .join("")}`}
-        {body.length > 50 && "..."}
+        {isActiveNote
+          ? ellipsize(activeNote.body, 50)
+          : ellipsize(note.body, 50)}
       </p>
       <div
         role="button"
         tabIndex="0"
         className="sidebar-add-note-button"
         onKeyDown={() => {}} // TODO: Accessiblity
-        onClick={() => deleteNote(id)}
+        onClick={() => deleteNote(note.id)}
       >
         <p>
           <span role="img" aria-label="delete button">
-            ❌ {activeNote.id === note.id && savingNote && "💾"}
+            ❌ {isActiveNote && savingNote && "💾"}
           </span>
         </p>
       </div>
