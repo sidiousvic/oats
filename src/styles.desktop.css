@@ -53,6 +53,20 @@
     align-items: center;
     justify-content: flex-start;
     padding: 3% 0;
+    outline: none;
+  }
+
+  #sidebar-title {
+    margin-bottom: 0;
+  }
+
+  #sidebar-subtitle {
+    font-size: small;
+  }
+
+  #sidebar-subtitle a {
+    color: black;
+    text-decoration: none;
   }
 
   #sidebar-note-list {

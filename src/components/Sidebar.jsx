@@ -12,7 +12,7 @@ export default function Sidebar() {
     <>
       <div
         id="sidebar"
-        role="button"
+        role="textbox"
         className={touched ? "sidebar-touched" : ""}
         tabIndex="0"
         onKeyDown={() => {}} // TODO: Accessiblity
@@ -24,6 +24,9 @@ export default function Sidebar() {
         }}
       >
         <h1 id="sidebar-title">Oats</h1>
+        <h3 id="sidebar-subtitle">
+          by <a href="https://www.github.com/sidiousvic">sidiousvic</a>
+        </h3>
         <SidebarNotes />
         <AddNoteButton emoji={"+"} onClickHandler={addNote} />
       </div>

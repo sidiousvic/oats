@@ -49,13 +49,22 @@
     align-items: center;
     justify-content: flex-start;
     padding: 3%;
+    outline: none;
+  }
+
+  #sidebar-title {
+    margin-bottom: 0;
+  }
+
+  #sidebar-subtitle a {
+    color: black;
+    text-decoration: none;
   }
 
   .sidebar-touched {
     position: absolute !important;
     height: 80% !important;
     transform: skewY(0) !important;
-    outline: none;
   }
 
   #sidebar-note-list {
