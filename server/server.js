@@ -6,7 +6,6 @@ const api = require("../controllers");
 
 app.use(morgan("dev"));
 app.use("/api", express.json(), express.urlencoded({ extended: true }), api);
-app.use(express.static(path.join(__dirname, "../build")));
 
 app.get("/", (_, res) => {
   res.sendFile(path.join(__dirname, "..", "build", "index.html"));

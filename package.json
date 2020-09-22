@@ -8,7 +8,7 @@
   "private": true,
   "proxy": "http://localhost:4000",
   "scripts": {
-    "start": "pm2 start server",
+    "start": "pm2 start server/index.js",
     "serve": "nodemon server/index.js",
     "dev": "react-scripts start",
     "build": "react-scripts build",
