@@ -42,11 +42,13 @@ export default function SidebarNote({ note }) {
       </p>
       <div
         id="delete-note-button"
-        role="button"
+        role="textbox"
         tabIndex="0"
         className="button"
         onKeyDown={() => {}} // TODO: Accessiblity
-        onClick={() => deleteNote(note.id)}
+        onClick={() => {
+          deleteNote(note.id);
+        }}
       >
         <p>
           <span role="img" aria-label="delete button">
