@@ -1,16 +1,17 @@
 import React from "react";
 
-export default function EmojiButton({ emoji, onClickHandler }) {
+export default function AddNoteButton({ emoji, onClickHandler }) {
   return (
     <div
+      id="add-note-button"
       role="button"
+      className="button"
       tabIndex="0"
-      id="sidebar-add-note-button"
       onKeyDown={() => {}} // TODO: Accessiblity
       onClick={onClickHandler}
     >
       <p>
-        <span role="img" aria-label="delete button">
+        <span role="img" aria-label="button">
           {emoji}
         </span>
       </p>
