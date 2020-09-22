@@ -15,12 +15,10 @@ export default function Oats() {
     async function getAndSetNotes() {
       const response = await axios.get("/oats/notes");
       const notes = response.data;
-      const lastNote = notes[notes.length - 1];
-      if (!activeNote.id) setActiveNote(lastNote);
       setNotes(notes);
     }
     getAndSetNotes();
-  }, [savedNotesAt, activeNote.id]);
+  }, [savedNotesAt]);
 
   useEffect(() => {
     if (!notes.length) {
@@ -30,6 +28,13 @@ export default function Oats() {
           "A slick notes app.                                      \n\n👈🏼 Select a note\n❌ Delete a note\n💾 Save your note",
         id: "0",
       });
+    }
+  }, [notes]);
+
+  useEffect(() => {
+    if (notes.length) {
+      const lastNote = notes[notes.length - 1];
+      setActiveNote(lastNote);
     }
   }, [notes]);
 
