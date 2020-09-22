@@ -1,20 +1,21 @@
-/* You may need to fix this file? */
 require("dotenv").config();
 const path = require("path");
 const MIGRATION_DIR = path.resolve(__dirname + "/migrations");
 const SEED_DIR = path.resolve(__dirname + "/seeds");
-const DATABASE_USER = process.env.DB_USER;
-const DATABASE_HOST = "127.0.0.1";
-const DATABASE_PORT = "5432";
-const DATABASE_URL =
-  process.env.DB_URL || `postgres://${process.env.DB_USER}@127.0.0.1:5432/oats`;
+const DB_USER = process.env.DB_USER;
+const DB_PASSWORD = process.env.DB_PASSWORD;
+const DB_HOST = "127.0.0.1";
+const DB_PORT = "5432";
+const DB_URL =
+  process.env.DB_URL ||
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5432/oats`;
 
 module.exports = {
   client: "pg",
-  connection: DATABASE_URL || {
-    host: DATABASE_HOST,
-    port: DATABASE_PORT,
-    user: DATABASE_USER,
+  connection: DB_URL || {
+    host: DB_HOST,
+    port: DB_PORT,
+    user: DB_USER,
   },
   searchPath: "public",
   pool: {
@@ -29,13 +30,3 @@ module.exports = {
     directory: SEED_DIR,
   },
 };
-
-/* Questions
-
-In `connection`, what is `process.env.DATABASE_URL`?
-What does this line do?
-Why can't you just use `localhost:5432`?
-
-Your Answer Here
-
-*/
