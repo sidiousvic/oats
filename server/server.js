@@ -4,6 +4,6 @@ const morgan = require("morgan");
 const api = require("../controllers");
 
 app.use(morgan("combined"));
-app.use("/api", express.json(), express.urlencoded({ extended: true }), api);
+app.use("/oats", express.json(), express.urlencoded({ extended: true }), api);
 
 module.exports = app;
