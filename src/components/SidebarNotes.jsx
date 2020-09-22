@@ -3,7 +3,6 @@ import { OatsContext } from "./Oats";
 import SidebarNote from "./SidebarNote";
 
 export default function SidebarNotes() {
-  console.log("SidebarNotes rendered.");
   const { notes } = useContext(OatsContext);
 
   return (

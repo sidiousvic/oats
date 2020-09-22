@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { OatsContext } from "./Oats";
 
 export default function SidebarNote({ note }) {
-  console.log("SidebarNote rendered.");
   const { deleteNote, setActiveNote, savingNote, activeNote } = useContext(
     OatsContext
   );

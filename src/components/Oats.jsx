@@ -8,11 +8,7 @@ const OatsProvider = OatsContext.Provider;
 
 export default function Oats() {
   const [notes, setNotes] = useState([]);
-  const [activeNote, setActiveNote] = useState({
-    title: "Welcome to Oats! 👽 ✏️",
-    body: "👈🏼 Select a note",
-    id: "0",
-  });
+  const [activeNote, setActiveNote] = useState({});
   const [savingNote, setSavingNote] = useState(false);
   const [savedNotesAt, setSavedNotesAt] = useState(Date.now());
 
@@ -20,7 +16,6 @@ export default function Oats() {
     async function getAndSetNotes() {
       const response = await fetch("/api/notes");
       const notes = await response.json();
-      // console.log("Notes gotten!", notes.length);
       setNotes(notes);
     }
     getAndSetNotes();
@@ -34,12 +29,10 @@ export default function Oats() {
       body: "This is a new note.",
     };
     await axios.post(`api/notes`, newNote);
-    // console.log("Note added!", newNote.title);
     setSavedNotesAt(Date.now());
   }
   async function deleteNote(id) {
     await axios.delete(`api/notes/${id}`);
-    // console.log("Note deleted!", notes.find((note) => note.id === id).title);
     setSavedNotesAt(Date.now());
   }
   function autoSaveNote() {
@@ -52,7 +45,6 @@ export default function Oats() {
   async function updateNote(id) {
     displaySavingNote();
     await axios.patch(`api/notes/${id}`, activeNote);
-    // console.log("Note updated!", id);
     setSavedNotesAt(Date.now());
   }
 

@@ -4,7 +4,6 @@ import SidebarNotes from "./SidebarNotes";
 import EmojiButton from "./EmojiButton";
 
 export default function Sidebar() {
-  console.log("Sidebar rendered");
   const { addNote } = useContext(OatsContext);
   return (
     <>
