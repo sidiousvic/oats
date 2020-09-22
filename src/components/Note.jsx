@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { NotesContext } from "../contexts/NotesContext";
 
-export default function Note({ setActiveNote, activeNote, updateNote }) {
+export default function Note() {
+  const { useNotes } = useContext(NotesContext);
+  const { setActiveNote, activeNote, updateNote } = useNotes();
   return (
     <>
       <div id="note">

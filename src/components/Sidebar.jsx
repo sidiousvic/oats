@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import { NotesContext } from "../contexts/NotesContext";
 import SidebarNote from "./SidebarNote";
 
-export default function Sidebar({
-  addNote,
-  deleteNote,
-  notes,
-  savingNote,
-  activeNote,
-  setActiveNote,
-}) {
+export default function Sidebar() {
+  const useNotes = useContext(NotesContext);
+  const {
+    addNote,
+    deleteNote,
+    notes,
+    savingNote,
+    activeNote,
+    setActiveNote,
+  } = useNotes();
+
   function renderNotes() {
     return notes.map((note) => (
       <SidebarNote
