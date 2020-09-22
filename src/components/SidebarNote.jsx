@@ -8,7 +8,7 @@ export default function SidebarNote({ note }) {
 
   const isActiveNote = note.id === activeNote.id;
 
-  function ellipsize(string, limit) {
+  function truncateWithEllipsis(string, limit) {
     const isOverChar = (num) => string.length > num;
     const ellipsis = isOverChar(limit) ? "..." : "";
 
@@ -33,13 +33,13 @@ export default function SidebarNote({ note }) {
     >
       <h1>
         {isActiveNote
-          ? ellipsize(activeNote.title, 25)
-          : ellipsize(note.title, 25)}
+          ? truncateWithEllipsis(activeNote.title, 25)
+          : truncateWithEllipsis(note.title, 25)}
       </h1>
       <p>
         {isActiveNote
-          ? ellipsize(activeNote.body, 50)
-          : ellipsize(note.body, 50)}
+          ? truncateWithEllipsis(activeNote.body, 50)
+          : truncateWithEllipsis(note.body, 50)}
       </p>
       <div
         role="button"
