@@ -1,66 +1,28 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Note from "./Note";
-import axios from "axios";
+import useNotes from "../hooks/useNotes";
 
 export default function App() {
-  const [notes, setNotes] = useState([]);
-  const [activeNote, setActiveNote] = useState({
-    title: "Welcome to Oats! 👽 ✏️",
-    body: "👈🏼 Select a note",
-  });
-  const [saving, setSaving] = useState(false);
+  const {
+    notes,
+    activeNote,
+    setActiveNote,
+    savingNote,
+    getNotes,
+    addNote,
+    deleteNote,
+    autoSaveNote,
+    updateNote,
+  } = useNotes();
 
-  const getNotes = useCallback(() => {
-    async function getNotes() {
-      const response = await fetch("/api/notes");
-      const notes = await response.json();
-      console.log("Notes gotten!", notes);
-      setNotes(notes);
-    }
-    getNotes();
-  }, []);
-  useEffect(() => {
-    getNotes();
-  }, [getNotes]);
-  async function addNote() {
-    const newNote = {
-      title: "New note.",
-      body: "This is a new note.",
-    };
-    await axios.post(`api/notes`, newNote);
-    console.log("Note added!", newNote);
-    getNotes();
-  }
-  function deleteNote(id) {
-    axios.delete(`api/notes/${id}`);
-    const newNotes = notes.filter((note) => note.id !== id);
-    setNotes(newNotes);
-  }
-
-  useEffect(() => {
-    const autoSaveInterval = setInterval(() => {
-      if (activeNote.id) updateNote(activeNote.id);
-    }, 3000);
-    return () => clearInterval(autoSaveInterval);
-  });
-
-  async function updateNote(id) {
-    setSaving(true);
-    setTimeout(() => {
-      setSaving(false);
-    }, 1000);
-    if (id) {
-      await axios.patch(`api/notes/${id}`, activeNote);
-      console.log("Note updated!", id);
-    }
-    getNotes();
-  }
+  useEffect(getNotes, [getNotes]);
+  useEffect(autoSaveNote);
 
   return (
     <div id="app">
       <Sidebar
-        saving={saving}
+        savingNote={savingNote}
         notes={notes}
         addNote={addNote}
         activeNote={activeNote}
@@ -68,7 +30,7 @@ export default function App() {
         setActiveNote={setActiveNote}
       />
       <Note
-        saving={saving}
+        savingNote={savingNote}
         setActiveNote={setActiveNote}
         updateNote={updateNote}
         activeNote={activeNote}

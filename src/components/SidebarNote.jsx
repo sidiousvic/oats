@@ -5,7 +5,7 @@ export default function SidebarNote({
   deleteNote,
   activeNote,
   setActiveNote,
-  saving,
+  savingNote,
 }) {
   const { title, body, id } = note;
 
@@ -37,7 +37,7 @@ export default function SidebarNote({
       >
         <p>
           <span role="img" aria-label="delete button">
-            ❌ {activeNote.id === note.id && saving && "💾"}
+            ❌ {activeNote.id === note.id && savingNote && "💾"}
           </span>
         </p>
       </div>

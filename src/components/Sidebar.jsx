@@ -5,14 +5,14 @@ export default function Sidebar({
   addNote,
   deleteNote,
   notes,
-  saving,
+  savingNote,
   activeNote,
   setActiveNote,
 }) {
   function renderNotes() {
     return notes.map((note) => (
       <SidebarNote
-        saving={saving}
+        savingNote={savingNote}
         key={note.id}
         activeNote={activeNote}
         setActiveNote={setActiveNote}
