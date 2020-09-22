@@ -1,48 +1,53 @@
 import React from "react";
+import { useContext } from "react";
+import { useEffect, useRef } from "react";
+import { OatsContext } from "./Oats";
 
-export default function Note({ setActiveNote, activeNote, updateNote }) {
+export default function Note({ activeNote }) {
+  const { setActiveNote, updateNote } = useContext(OatsContext);
+  const noteTitleRef = useRef();
+  const noteBodyRef = useRef();
+
+  useEffect(() => {
+    setActiveNote({
+      id: activeNote.id,
+      title: noteTitleRef.current.value,
+      body: noteBodyRef.current.value,
+    });
+  }, [setActiveNote, activeNote.id]);
+
   return (
     <>
-      <div id="note">
-        <textarea
-          id="note-title"
-          value={activeNote.title && activeNote.title}
-          onChange={(e) => {
-            const newNote = {
-              id: activeNote.id,
-              title: e.target.value,
-              body: activeNote.body,
-            };
-            setActiveNote(newNote);
-          }}
-        />
-        <textarea
-          id="note-body"
-          value={activeNote.body && activeNote.body}
-          onChange={(e) => {
-            const newNote = {
-              id: activeNote.id,
-              title: activeNote.title,
-              body: e.target.value,
-            };
-            setActiveNote(newNote);
-          }}
-        />
-      </div>
       <div
-        role="button"
-        tabIndex="0"
-        id="sidebar-add-note-button"
-        onKeyDown={() => {}} // TODO: Accessiblity
-        onClick={() => {
+        id="note"
+        onBlur={() => {
           updateNote(activeNote.id);
         }}
       >
-        <p>
-          <span role="img" aria-label="delete button">
-            💾
-          </span>
-        </p>
+        <textarea
+          ref={noteTitleRef}
+          id="note-title"
+          value={activeNote.title && activeNote.title}
+          onChange={(e) => {
+            setActiveNote({
+              id: activeNote.id,
+              title: e.target.value,
+              body: activeNote.body,
+            });
+          }}
+        />
+        <textarea
+          ref={noteBodyRef}
+          id="note-body"
+          value={activeNote.body && activeNote.body}
+          onChange={(e) => {
+            setActiveNote({
+              id: activeNote.id,
+              title: activeNote.title,
+              body: e.target.value,
+            });
+          }}
+        />
       </div>
     </>
   );
