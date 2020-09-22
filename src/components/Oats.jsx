@@ -13,8 +13,7 @@ export default function Oats() {
 
   useEffect(() => {
     async function getAndSetNotes() {
-      const response = await fetch("/api/notes");
-      const notes = await response.json();
+      const notes = await axios.get("/notes");
       setNotes(notes);
       const lastNote = notes[notes.length - 1];
       setActiveNote(lastNote);
@@ -38,11 +37,11 @@ export default function Oats() {
       title: "New note.",
       body: "This is a new note.",
     };
-    await axios.post(`api/notes`, newNote);
+    await axios.post(`/notes`, newNote);
     setSavedNotesAt(Date.now());
   }
   async function deleteNote(id) {
-    await axios.delete(`api/notes/${id}`);
+    await axios.delete(`/notes/${id}`);
     setSavedNotesAt(Date.now());
   }
   function autoSaveNote() {
@@ -52,7 +51,7 @@ export default function Oats() {
     return () => clearInterval(autoSaveInterval);
   }
   async function updateNote(id) {
-    await axios.patch(`api/notes/${id}`, activeNote);
+    await axios.patch(`/notes/${id}`, activeNote);
     setSavedNotesAt(Date.now());
   }
 
