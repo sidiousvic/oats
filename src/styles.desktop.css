@@ -1,0 +1,160 @@
+@media only screen and (min-device-width: 480px) {
+  html {
+    background: #111;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(45deg, #fff, lime 50%, #000);
+    background-size: 2px 2px;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+  }
+
+  #root {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  #oats {
+    background: linear-gradient(45deg, #fff, greenyellow 50%, #000);
+    background-size: 2px 2px;
+    font-family: "Neue Machina";
+    height: 80%;
+    width: 80%;
+    border: 2px solid black;
+    box-shadow: 10px 10px black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    flex-wrap: wrap;
+  }
+
+  #sidebar {
+    transform: skewX(-5deg);
+    height: 80%;
+    width: 30%;
+    background-color: greenyellow;
+    border: 2px solid black;
+    box-shadow: 5px 5px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3% 0;
+  }
+
+  #sidebar-note-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow: scroll;
+  }
+
+  .sidebar-note {
+    background-color: #111;
+    color: whitesmoke;
+    font-size: 0.6rem;
+    margin: 2.5%;
+    padding: 10px;
+    border: 2px solid black;
+    width: 67%;
+    outline: none;
+    overflow-wrap: break-word;
+  }
+
+  .active-note {
+    background-color: whitesmoke;
+    color: black;
+    cursor: pointer;
+    border: 2px solid lime;
+    box-shadow: 5px 5px black;
+  }
+
+  .sidebar-note:hover {
+    background-color: whitesmoke;
+    color: black;
+    cursor: pointer;
+  }
+
+  .button {
+    font-weight: 900;
+    text-align: center;
+    filter: grayscale(100%);
+    font-size: 2rem;
+    width: fit-content;
+  }
+  .button p {
+    margin: 0.3rem;
+  }
+  .button:hover {
+    cursor: pointer;
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }
+
+  .button:focus {
+    outline: none;
+  }
+
+  #delete-note-button {
+    font-size: 1rem;
+  }
+  #delete-note-button:hover {
+    cursor: pointer;
+    filter: grayscale(0%);
+    transform: none;
+  }
+
+  #add-note-button:hover {
+    color: orangered;
+    animation: rotate 1s linear infinite;
+    transition: linear 100ms;
+  }
+
+  #note {
+    height: 90%;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    border: 2px solid black;
+    box-shadow: 5px 5px black;
+  }
+
+  textarea {
+    font-family: "Neue Machina";
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+  }
+
+  #note-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    height: 15%;
+  }
+
+  #note-body {
+    font-weight: 500;
+    height: 85%;
+  }
+}
