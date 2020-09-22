@@ -34,9 +34,9 @@ export default function Oats() {
   useEffect(() => {
     if (notes.length) {
       const lastNote = notes[notes.length - 1];
-      setActiveNote(lastNote);
+      if (activeNote.id === lastNote.id) setActiveNote(lastNote);
     }
-  }, [notes, activeNote]);
+  }, [notes, activeNote.id]);
 
   async function addNote() {
     const newNote = {
