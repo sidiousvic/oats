@@ -1,8 +1,10 @@
 import React from "react";
+import { useContext } from "react";
 import { useEffect, useRef } from "react";
+import { OatsContext } from "./Oats";
 
-export default function Note({ activeNote, NotesAPI }) {
-  const { setActiveNote, updateNote } = NotesAPI;
+export default function Note({ activeNote }) {
+  const { setActiveNote, updateNote } = useContext(OatsContext);
   const noteTitleRef = useRef();
   const noteBodyRef = useRef();
 

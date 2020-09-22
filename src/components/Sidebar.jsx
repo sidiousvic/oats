@@ -8,7 +8,7 @@ export default function Sidebar() {
   return (
     <>
       <div id="sidebar">
-        <h1 id="sidebar-title">Notes</h1>
+        <h1 id="sidebar-title">Oats</h1>
         <SidebarNotes />
         <AddNoteButton emoji={"+"} onClickHandler={addNote} />
       </div>

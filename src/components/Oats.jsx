@@ -9,7 +9,6 @@ const OatsProvider = OatsContext.Provider;
 export default function Oats() {
   const [notes, setNotes] = useState([]);
   const [activeNote, setActiveNote] = useState({});
-  const [savingNote, setSavingNote] = useState(false);
   const [savedNotesAt, setSavedNotesAt] = useState(Date.now());
 
   useEffect(() => {
@@ -20,8 +19,6 @@ export default function Oats() {
     }
     getAndSetNotes();
   }, [savedNotesAt]);
-
-  // useEffect(autoSaveNote, [savedNotesAt]);
 
   async function addNote() {
     const newNote = {
@@ -41,26 +38,16 @@ export default function Oats() {
     }, 3000);
     return () => clearInterval(autoSaveInterval);
   }
-
   async function updateNote(id) {
-    displaySavingNote();
     await axios.patch(`api/notes/${id}`, activeNote);
     setSavedNotesAt(Date.now());
   }
 
-  function displaySavingNote() {
-    setSavingNote(true);
-    setTimeout(() => {
-      setSavingNote(false);
-    }, 500);
-  }
-
   const OatsAPI = {
     notes,
-    savingNote,
     activeNote,
-    setNotes,
     setActiveNote,
+    setNotes,
     savedNotesAt,
     setSavedNotesAt,
     addNote,
@@ -72,8 +59,8 @@ export default function Oats() {
   return (
     <OatsProvider value={OatsAPI}>
       <div id="oats">
-        <Sidebar notes={notes} activeNote={activeNote} NotesAPI={OatsAPI} />
-        <Note activeNote={activeNote} NotesAPI={OatsAPI} />
+        <Sidebar notes={notes} activeNote={activeNote} />
+        <Note activeNote={activeNote} />
       </div>
     </OatsProvider>
   );
