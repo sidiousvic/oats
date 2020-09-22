@@ -16,9 +16,22 @@ export default function Oats() {
       const response = await fetch("/api/notes");
       const notes = await response.json();
       setNotes(notes);
+      const lastNote = notes[notes.length - 1];
+      setActiveNote(lastNote);
     }
     getAndSetNotes();
   }, [savedNotesAt]);
+
+  useEffect(() => {
+    if (!notes.length) {
+      setActiveNote({
+        title: "Welcome to Oats! 👽 ✏️",
+        body:
+          "A slick notes app.                                      \n\n👈🏼 Select a note\n❌ Delete a note\n💾 Save your note",
+        id: "0",
+      });
+    }
+  }, [notes]);
 
   async function addNote() {
     const newNote = {
