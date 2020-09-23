@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { OatsContext } from "..";
-import SidebarNotes from "../../SidebarNotes";
-import AddNoteButton from "../../AddNoteButton";
+import { OatsContext } from "../../Oats";
+import SidebarNotes from "./SidebarNotes";
+import AddNoteButton from "./AddNoteButton";
 import { useState } from "react";
 
 export default function Sidebar() {

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { OatsContext } from "./Oats";
+import { OatsContext } from "../../../Oats";
 import SidebarNote from "./SidebarNote";
 
 export default function SidebarNotes() {
