@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext } from "react";
-import Sidebar from "./Sidebar";
-import Note from "./Note";
+import Sidebar from "../Sidebar";
+import Note from "../Note";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
