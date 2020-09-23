@@ -5,7 +5,7 @@ import { OatsContext } from "./Oats";
 
 export default function Note() {
   const {
-    notes,
+    notesCache,
     setNotesCache,
     updateNote,
     activeNoteId,
@@ -37,7 +37,7 @@ export default function Note() {
           id="note-title"
           value={activeNote.title && activeNote.title}
           onChange={(e) => {
-            const newNotes = notes.map((note) => {
+            const newNotes = notesCache.map((note) => {
               if (note.id === activeNote.id) {
                 return {
                   id: activeNote.id,
@@ -54,7 +54,7 @@ export default function Note() {
           id="note-body"
           value={activeNote.body && activeNote.body}
           onChange={(e) => {
-            const newNotes = notes.map((note) => {
+            const newNotes = notesCache.map((note) => {
               if (note.id === activeNote.id) {
                 return {
                   id: activeNote.id,
