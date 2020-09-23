@@ -18,14 +18,14 @@ export default function Oats() {
   }
 
   useEffect(() => {
-    async function getNotes() {
-      const response = await axios.get("/oats/notes");
-      const notes = response.data;
-      setNotesCache(notes);
-    }
     getNotes();
   }, []);
 
+  async function getNotes() {
+    const response = await axios.get("/oats/notes");
+    const notes = response.data;
+    setNotesCache(notes);
+  }
   async function addNote() {
     const newNote = {
       id: uuidv4(),
@@ -56,12 +56,12 @@ export default function Oats() {
 
   const OatsAPI = {
     notesCache,
-    getActiveNote,
+    setNotesCache,
     activeNoteId,
     setActiveNoteId,
-    setNotesCache,
     savedNotesAt,
     setSavedNotesAt,
+    getActiveNote,
     addNote,
     deleteNote,
     updateNote,
