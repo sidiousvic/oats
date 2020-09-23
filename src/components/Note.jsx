@@ -1,27 +1,35 @@
 import React from "react";
 import { useContext } from "react";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { OatsContext } from "./Oats";
 
-export default function Note({ activeNote }) {
-  const { setActiveNote, updateNote } = useContext(OatsContext);
+export default function Note() {
+  const {
+    notes,
+    setNotesCache,
+    updateNote,
+    activeNoteId,
+    getActiveNote,
+  } = useContext(OatsContext);
+
+  const welcomeNote = {
+    title: "Welcome to Oats! 👽 ✏️",
+    body:
+      "A slick notes app.                                      \n\n➕ Add a note\n👆🏼 Select a note\n❌ Delete a note\n💾 Save your note",
+    id: "0",
+  };
+
   const noteTitleRef = useRef();
   const noteBodyRef = useRef();
 
-  useEffect(() => {
-    setActiveNote({
-      id: activeNote.id,
-      title: noteTitleRef.current.value,
-      body: noteBodyRef.current.value,
-    });
-  }, [setActiveNote, activeNote.id]);
+  const activeNote = getActiveNote(activeNoteId) || welcomeNote;
 
   return (
     <>
       <div
         id="note"
         onBlur={() => {
-          updateNote(activeNote.id);
+          updateNote(activeNoteId);
         }}
       >
         <textarea
@@ -29,11 +37,16 @@ export default function Note({ activeNote }) {
           id="note-title"
           value={activeNote.title && activeNote.title}
           onChange={(e) => {
-            setActiveNote({
-              id: activeNote.id,
-              title: e.target.value,
-              body: activeNote.body,
+            const newNotes = notes.map((note) => {
+              if (note.id === activeNote.id) {
+                return {
+                  id: activeNote.id,
+                  title: e.target.value,
+                  body: activeNote.body,
+                };
+              } else return note;
             });
+            setNotesCache(newNotes);
           }}
         />
         <textarea
@@ -41,11 +54,16 @@ export default function Note({ activeNote }) {
           id="note-body"
           value={activeNote.body && activeNote.body}
           onChange={(e) => {
-            setActiveNote({
-              id: activeNote.id,
-              title: activeNote.title,
-              body: e.target.value,
+            const newNotes = notes.map((note) => {
+              if (note.id === activeNote.id) {
+                return {
+                  id: activeNote.id,
+                  title: activeNote.title,
+                  body: e.target.value,
+                };
+              } else return note;
             });
+            setNotesCache(newNotes);
           }}
         />
       </div>

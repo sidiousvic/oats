@@ -3,11 +3,11 @@ import { OatsContext } from "./Oats";
 import SidebarNote from "./SidebarNote";
 
 export default function SidebarNotes() {
-  const { notes } = useContext(OatsContext);
+  const { notesCache } = useContext(OatsContext);
 
   return (
     <div id="sidebar-note-list">
-      {notes.map((note) => (
+      {notesCache.map((note) => (
         <SidebarNote key={note.id} note={note} />
       ))}
     </div>

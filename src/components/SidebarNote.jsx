@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { OatsContext } from "./Oats";
 
-export default function SidebarNote({ note }) {
-  const { deleteNote, setActiveNote, activeNote } = useContext(OatsContext);
+export default function SidebarNote({ note: thisNote }) {
+  const { deleteNote, setActiveNoteId, activeNoteId } = useContext(OatsContext);
 
-  const isActiveNote = note.id === activeNote.id;
+  const isActiveNote = thisNote.id === activeNoteId;
 
   function truncateWithEllipsis(string, limit) {
     const isOverChar = (num) => string.length > num;
@@ -22,24 +22,16 @@ export default function SidebarNote({ note }) {
     <div
       role="button"
       tabIndex="0"
-      note-id={note.id}
-      className={`sidebar-note ${note.id === activeNote.id && "active-note"}`}
+      noteid={thisNote.id}
+      className={`sidebar-note ${isActiveNote && "active-note"}`}
       onFocus={() => {}} // TODO: Accessiblity
       onClick={() => {
-        setActiveNote(note);
+        setActiveNoteId(thisNote.id);
       }}
       onKeyDown={() => {}} // TODO: Accessiblity
     >
-      <h1>
-        {isActiveNote
-          ? truncateWithEllipsis(activeNote.title, 25)
-          : truncateWithEllipsis(note.title, 25)}
-      </h1>
-      <p>
-        {isActiveNote
-          ? truncateWithEllipsis(activeNote.body, 50)
-          : truncateWithEllipsis(note.body, 50)}
-      </p>
+      <h1>{truncateWithEllipsis(thisNote.title, 25)}</h1>
+      <p>{truncateWithEllipsis(thisNote.body, 50)}</p>
       <div
         id="delete-note-button"
         role="textbox"
@@ -47,7 +39,7 @@ export default function SidebarNote({ note }) {
         className="button"
         onKeyDown={() => {}} // TODO: Accessiblity
         onClick={() => {
-          deleteNote(note.id);
+          deleteNote(thisNote.id);
         }}
       >
         <p>
