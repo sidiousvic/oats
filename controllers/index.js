@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models/db");
-const { v4: uuidv4 } = require("uuid");
 
 router.get("/notes", async (_, res) => {
   const notes = await db
@@ -20,15 +19,14 @@ router.delete("/notes/:id", async (req, res) => {
 });
 
 router.post("/notes", async (req, res) => {
-  const { title, body } = req.body;
-  const id = uuidv4();
+  const { title, body, id } = req.body;
   const note = {
     id,
     title,
     body,
   };
   await db("notes").insert(note);
-  res.send(`Note with ID ${id} was deleted.`);
+  res.send(`Note with ID ${id} was added.`);
 });
 
 router.patch("/notes/:id", async (req, res) => {

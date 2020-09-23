@@ -40,6 +40,7 @@ export default function Oats() {
 
   async function addNote() {
     const newNote = {
+      id: uuidv4(),
       title: "New note.",
       body: "This is a new note.",
     };
