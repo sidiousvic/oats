@@ -1,0 +1,74 @@
+@media only screen and (min-device-width: 480px) {
+  body {
+    background: linear-gradient(45deg, #fff, lime 50%, #000);
+  }
+
+  #oats {
+    height: 80%;
+    width: 80%;
+    background: linear-gradient(45deg, #fff, greenyellow 50%, #000);
+    flex-direction: row;
+    padding: 0 5%;
+    border: 2px solid black;
+    box-shadow: 10px 10px black;
+  }
+
+  #sidebar {
+    transform: skewX(-5deg);
+    height: 80%;
+    width: 30%;
+    background-color: greenyellow;
+    padding: 3% 0;
+  }
+
+  /* @dynamic onClick */
+  .active-note {
+    border: 2px solid lime !important;
+  }
+
+  .sidebar-note:hover {
+    background-color: whitesmoke;
+    color: black;
+    cursor: pointer;
+  }
+
+  .button {
+    filter: grayscale(100%);
+  }
+
+  .button:hover {
+    cursor: pointer;
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }
+
+  #delete-note-button {
+    font-size: 1rem;
+  }
+
+  #delete-note-button:hover {
+    filter: grayscale(0%);
+    transform: none;
+  }
+
+  #add-note-button:hover {
+    color: orangered;
+    animation: rotate 1s linear infinite;
+    transition: linear 100ms;
+  }
+
+  #note {
+    height: 90%;
+    width: 60%;
+  }
+
+  #note-title {
+    font-family: "NeueMachinaBold", sans-serif;
+    font-size: 1.5rem;
+    height: 15%;
+  }
+
+  #note-title {
+    height: 15%;
+  }
+}

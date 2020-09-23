@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { OatsContext } from "./Oats";
+import { OatsContext } from "../../../../Oats";
 
 export default function SidebarNote({ note: thisNote }) {
   const { deleteNote, setActiveNoteId, activeNoteId } = useContext(OatsContext);
