@@ -1,9 +1,8 @@
 import React from "react";
 
-export default function AddNoteButton({ emoji, onClickHandler }) {
+export default function Button({ emoji, onClickHandler }) {
   return (
     <div
-      id="add-note-button"
       role="button"
       className="button"
       tabIndex="0"
