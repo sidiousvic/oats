@@ -54,7 +54,6 @@ export default function Note() {
           id="note-title"
           value={activeNote.title && activeNote.title}
           onKeyDown={saveNoteOnCommandPlusS}
-          // onKeyUp={updateNote}
           onChange={setNoteToCache}
         />
         <textarea
@@ -62,7 +61,6 @@ export default function Note() {
           id="note-body"
           value={activeNote.body && activeNote.body}
           onKeyDown={saveNoteOnCommandPlusS}
-          // onKeyUp={updateNote}
           onChange={setNoteToCache}
         />
       </div>
