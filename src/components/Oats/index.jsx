@@ -40,7 +40,9 @@ export default function Oats() {
     await axios.delete(`/oats/notes/${id}`);
     setNotesCache(notesCache.filter((note) => note.id !== id));
     setSavedNotesAt(Date.now());
-    setActiveNoteId(notesCache[notesCache.length - 1]);
+    if (notesCache.length)
+      setActiveNoteId(notesCache[notesCache.length - 1].id);
+    else setActiveNoteId("0");
   }
   async function updateNote() {
     const id = activeNoteId;
