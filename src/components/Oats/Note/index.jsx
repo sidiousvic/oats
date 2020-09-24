@@ -15,7 +15,7 @@ export default function Note() {
   const welcomeNote = {
     title: "Welcome to Oats! 👽 ✏️",
     body:
-      "A slick notes app.                                      \n\n➕ Add a note\n👆🏼 Select a note\n❌ Delete a note\n💾 Save your note",
+      "A slick notes app.                                      \n\n🌾 Add a note\n👆🏼 Select a note\n✏️ Write a note\n💾 Save a note\n❌ Delete a note",
     id: "0",
   };
 
