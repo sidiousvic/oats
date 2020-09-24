@@ -42,7 +42,8 @@ export default function Oats() {
     setSavedNotesAt(Date.now());
     setActiveNoteId(notesCache[notesCache.length - 1]);
   }
-  async function updateNote(id) {
+  async function updateNote() {
+    const id = activeNoteId;
     const activeNote = getActiveNote(id);
     await axios.patch(`/oats/notes/${id}`, activeNote);
     setNotesCache(

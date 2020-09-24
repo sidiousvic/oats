@@ -28,6 +28,19 @@ export default function Note() {
       updateNote(activeNoteId);
     }
   }
+  function setNoteToCache() {
+    const newNotes = notesCache.map((note) => {
+      if (note.id === activeNote.id) {
+        return {
+          id: activeNote.id,
+          title: noteTitleRef.current.value,
+          body: noteBodyRef.current.value,
+        };
+      } else return note;
+    });
+    setNotesCache(newNotes);
+  }
+
   const noteTitleRef = useRef();
   const noteBodyRef = useRef();
 
@@ -35,18 +48,14 @@ export default function Note() {
 
   return (
     <>
-      <div
-        id="note"
-        onBlur={() => {
-          updateNote(activeNoteId);
-        }}
-      >
+      <div id="note" onBlur={updateNote}>
         <textarea
           ref={noteTitleRef}
           id="note-title"
           value={activeNote.title && activeNote.title}
           onKeyDown={saveNoteOnCommandPlusS}
           onKeyUp={updateNote}
+          onChange={setNoteToCache}
         />
         <textarea
           ref={noteBodyRef}
@@ -54,6 +63,7 @@ export default function Note() {
           value={activeNote.body && activeNote.body}
           onKeyDown={saveNoteOnCommandPlusS}
           onKeyUp={updateNote}
+          onChange={setNoteToCache}
         />
       </div>
     </>
