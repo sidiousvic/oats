@@ -1,9 +1,14 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const api = require("../controllers");
+const notesRouter = require("../routers/notes.js");
 
 app.use(morgan("dev"));
-app.use("/oats", express.json(), express.urlencoded({ extended: true }), api);
+app.use(
+  "/oats",
+  express.json(),
+  express.urlencoded({ extended: true }),
+  notesRouter
+);
 
 module.exports = app;

@@ -1,8 +1,8 @@
 const express = require("express");
-const router = express.Router();
+const notesRouter = express.Router();
 const db = require("../models/db");
 
-router.get("/notes", async (_, res) => {
+notesRouter.get("/notes", async (_, res) => {
   const notes = await db
     .select()
     .from("notes")
@@ -10,7 +10,7 @@ router.get("/notes", async (_, res) => {
   res.send(notes);
 });
 
-router.delete("/notes/:id", async (req, res) => {
+notesRouter.delete("/notes/:id", async (req, res) => {
   const id = req.params.id;
   await db("notes")
     .where({ id })
@@ -18,7 +18,7 @@ router.delete("/notes/:id", async (req, res) => {
   res.send(`Note with ID ${id} was deleted.`);
 });
 
-router.post("/notes", async (req, res) => {
+notesRouter.post("/notes", async (req, res) => {
   const { title, body, id } = req.body;
   const note = {
     id,
@@ -29,7 +29,7 @@ router.post("/notes", async (req, res) => {
   res.send(`Note with ID ${id} was added.`);
 });
 
-router.patch("/notes/:id", async (req, res) => {
+notesRouter.patch("/notes/:id", async (req, res) => {
   const note = req.body;
   const { id } = req.params;
   await db("notes")
@@ -38,4 +38,4 @@ router.patch("/notes/:id", async (req, res) => {
   res.send(`Note with ID ${id} was updated.`);
 });
 
-module.exports = router;
+module.exports = notesRouter;
