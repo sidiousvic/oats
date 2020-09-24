@@ -2,7 +2,7 @@
 
 Oats is a slick notes app. ✏️ 👍🏼
 
-<img src="./docs/images/oats_previews.png">
+<a href="https://sidiousvic.dev/oats"><img src="./docs/images/oats_previews.png"></a>
 
 <details>
 <br>
