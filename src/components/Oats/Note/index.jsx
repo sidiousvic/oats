@@ -28,18 +28,6 @@ export default function Note() {
       updateNote(activeNoteId);
     }
   }
-  function setNoteToCache() {
-    const newNotes = notesCache.map((note) => {
-      if (note.id === activeNote.id) {
-        return {
-          id: activeNote.id,
-          title: noteTitleRef.current.value,
-          body: noteBodyRef.current.value,
-        };
-      } else return note;
-    });
-    setNotesCache(newNotes);
-  }
 
   const noteTitleRef = useRef();
   const noteBodyRef = useRef();
@@ -54,16 +42,38 @@ export default function Note() {
           id="note-title"
           value={activeNote.title && activeNote.title}
           onKeyDown={saveNoteOnCommandPlusS}
-          // onKeyUp={updateNote}
-          onChange={setNoteToCache}
+          onKeyUp={updateNote}
+          onChange={(e) => {
+            const newNotes = notesCache.map((note) => {
+              if (note.id === activeNote.id) {
+                return {
+                  id: activeNote.id,
+                  title: e.target.value,
+                  body: activeNote.body,
+                };
+              } else return note;
+            });
+            setNotesCache(newNotes);
+          }}
         />
         <textarea
           ref={noteBodyRef}
           id="note-body"
           value={activeNote.body && activeNote.body}
           onKeyDown={saveNoteOnCommandPlusS}
-          // onKeyUp={updateNote}
-          onChange={setNoteToCache}
+          onKeyUp={updateNote}
+          onChange={(e) => {
+            const newNotes = notesCache.map((note) => {
+              if (note.id === activeNote.id) {
+                return {
+                  id: activeNote.id,
+                  title: activeNote.title,
+                  body: e.target.value,
+                };
+              } else return note;
+            });
+            setNotesCache(newNotes);
+          }}
         />
       </div>
     </>
