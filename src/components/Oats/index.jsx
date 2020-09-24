@@ -21,11 +21,18 @@ export default function Oats() {
     getNotes();
   }, []);
 
+  useEffect(() => {
+    const lastNote = [...notesCache].pop();
+    if (notesCache.length) setActiveNoteId(lastNote.id);
+    else setActiveNoteId("0");
+  }, [notesCache]);
+
   async function getNotes() {
     const response = await axios.get("/oats/notes");
     const notes = response.data;
     setNotesCache(notes);
   }
+
   async function addNote() {
     const newNote = {
       id: uuidv4(),
@@ -34,16 +41,14 @@ export default function Oats() {
     };
     await axios.post(`/oats/notes`, newNote);
     setNotesCache([...notesCache, newNote]);
-    setActiveNoteId(newNote.id);
   }
+
   async function deleteNote(id) {
     await axios.delete(`/oats/notes/${id}`);
     setNotesCache(notesCache.filter((note) => note.id !== id));
     setSavedNotesAt(Date.now());
-    if (notesCache.length)
-      setActiveNoteId(notesCache[notesCache.length - 1].id);
-    else setActiveNoteId("0");
   }
+
   async function updateNote() {
     const id = activeNoteId;
     const activeNote = getActiveNote(id);
