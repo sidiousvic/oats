@@ -11,15 +11,17 @@
   }
 
   #sidebar {
+    display: flex;
+    flex-direction: column;
     transform: skewY(-5deg);
     overflow: hidden;
-    height: 10%;
+    height: 9%;
     width: 80%;
     background-color: rgb(255, 82, 52);
     padding: 3%;
   }
 
-  .sidebar-touched {
+  .mobile-sidebar-open {
     position: absolute !important;
     height: 80% !important;
     transform: skewY(0) !important;
