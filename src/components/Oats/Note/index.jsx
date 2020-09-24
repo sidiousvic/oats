@@ -19,6 +19,28 @@ export default function Note() {
     id: "0",
   };
 
+  function saveNoteOnCommandPlusS(e) {
+    if (
+      (window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) &&
+      e.keyCode === 83
+    ) {
+      e.preventDefault(); // override browser's CMD + S
+      updateNote(activeNoteId);
+    }
+  }
+  function setNoteToCache() {
+    const newNotes = notesCache.map((note) => {
+      if (note.id === activeNote.id) {
+        return {
+          id: activeNote.id,
+          title: noteTitleRef.current.value,
+          body: noteBodyRef.current.value,
+        };
+      } else return note;
+    });
+    setNotesCache(newNotes);
+  }
+
   const noteTitleRef = useRef();
   const noteBodyRef = useRef();
 
@@ -26,45 +48,22 @@ export default function Note() {
 
   return (
     <>
-      <div
-        id="note"
-        onBlur={() => {
-          updateNote(activeNoteId);
-        }}
-      >
+      <div id="note" onBlur={updateNote}>
         <textarea
           ref={noteTitleRef}
           id="note-title"
           value={activeNote.title && activeNote.title}
-          onChange={(e) => {
-            const newNotes = notesCache.map((note) => {
-              if (note.id === activeNote.id) {
-                return {
-                  id: activeNote.id,
-                  title: e.target.value,
-                  body: activeNote.body,
-                };
-              } else return note;
-            });
-            setNotesCache(newNotes);
-          }}
+          onKeyDown={saveNoteOnCommandPlusS}
+          onKeyUp={updateNote}
+          onChange={setNoteToCache}
         />
         <textarea
           ref={noteBodyRef}
           id="note-body"
           value={activeNote.body && activeNote.body}
-          onChange={(e) => {
-            const newNotes = notesCache.map((note) => {
-              if (note.id === activeNote.id) {
-                return {
-                  id: activeNote.id,
-                  title: activeNote.title,
-                  body: e.target.value,
-                };
-              } else return note;
-            });
-            setNotesCache(newNotes);
-          }}
+          onKeyDown={saveNoteOnCommandPlusS}
+          onKeyUp={updateNote}
+          onChange={setNoteToCache}
         />
       </div>
     </>
