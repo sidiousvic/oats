@@ -2,11 +2,20 @@ import express, { Response } from "express";
 const notesRouter = express.Router();
 const db = require("../models/db");
 
+type Note = {
+  noteId: number;
+  id: string;
+  title: string;
+  body: string;
+  timestamp: Date;
+};
+
 notesRouter.get("/notes", async (_, res: Response) => {
   const notes = await db
     .select()
     .from("notes")
     .orderBy("timestamp");
+  console.log(notes);
   res.send(notes);
 });
 
