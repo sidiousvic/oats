@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, useRef, createContext } from "react";
 import Sidebar from "./Sidebar";
 import Note from "./Note";
 import axios from "axios";
@@ -17,15 +17,25 @@ export default function Oats() {
     return activeNote;
   }
 
+  useEffect(
+    function setLastNoteAsActiveNote() {
+      if (notesCache.length)
+        setActiveNoteId(notesCache[notesCache.length - 1].id);
+      else setActiveNoteId("0");
+    },
+    /**@todo: Satisfy exhaustive deps rule
+     * This effect should run when notesCache's length changes only.
+     * eslint suggests to add notesCache as a dependency to avoid using stale notesCache data,
+     * since this doesn't depend on notesCache itself,
+     * we cannot be sure whether notesCache has changed across renders.
+     */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [notesCache.length]
+  );
+
   useEffect(() => {
     getNotes();
   }, []);
-
-  useEffect(() => {
-    const lastNote = [...notesCache].pop();
-    if (notesCache.length) setActiveNoteId(lastNote.id);
-    else setActiveNoteId("0");
-  }, [notesCache]);
 
   async function getNotes() {
     const response = await axios.get("/oats/notes");
