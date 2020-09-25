@@ -9,18 +9,18 @@ export default function Sidebar() {
   const { addNote, activeNoteId } = useContext(OatsContext);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [orientedLandscape, setOrientedLandscape] = useState(
-    ~~window.screen.orientation.angle === 90
+    Math.abs(window.screen.orientation.angle === 90
   );
   const sideBarExitEmoji = activeNoteId === "0" ? "🔙" : "✏️";
 
   function closeMobileSidebar() {
     setMobileSidebarOpen(false);
-    setOrientedLandscape(~~window.screen.orientation.angle === 90);
+    setOrientedLandscape(Math.abs(window.screen.orientation.angle === 90));
   }
 
   function openMobileSidebar() {
     setMobileSidebarOpen(true);
-    setOrientedLandscape(~~window.screen.orientation.angle === 90);
+    setOrientedLandscape(Math.abs(window.screen.orientation.angle === 90));
   }
 
   function closeSideBarOnOrientationChange() {
