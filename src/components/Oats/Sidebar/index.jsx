@@ -9,7 +9,7 @@ export default function Sidebar() {
   const { addNote, activeNoteId } = useContext(OatsContext);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [orientedLandscape, setOrientedLandscape] = useState(
-    Math.abs(window.screen.orientation.angle === 90
+    Math.abs(window.screen.orientation.angle === 90)
   );
   const sideBarExitEmoji = activeNoteId === "0" ? "🔙" : "✏️";
 
