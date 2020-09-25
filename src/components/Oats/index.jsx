@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import Sidebar from "./Sidebar";
 import Note from "./Note";
 import axios from "axios";
