@@ -1,8 +1,8 @@
-const express = require("express");
+import express, { Response } from "express";
 const notesRouter = express.Router();
 const db = require("../models/db");
 
-notesRouter.get("/notes", async (_, res) => {
+notesRouter.get("/notes", async (_, res: Response) => {
   const notes = await db
     .select()
     .from("notes")
