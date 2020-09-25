@@ -20,6 +20,9 @@ module.exports = {
   devtool: "inline-source-map",
   devServer: {
     contentBase: "./build",
+    proxy: {
+      "/": "http://localhost:4000",
+    },
   },
   optimization: {
     minimizer: [new UglifyJsPlugin()],
