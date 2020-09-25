@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { OatsContext } from "../../Oats";
-import SidebarNotes from "./SidebarNotes";
-import Button from "./Button";
+import { OatsContext } from "../Oats.jsx";
+import SidebarNotes from "./SidebarNotes/SidebarNotes.jsx";
+import Button from "./Button/Button.jsx";
 import { useState } from "react";
 import { useEffect } from "react";
 

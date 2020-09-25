@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { useRef } from "react";
-import { OatsContext } from "../../Oats";
+import { OatsContext } from "../Oats.jsx";
 
 export default function Note() {
   const {
