@@ -31,6 +31,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       filename: "./index.html",
+      favicon: "./public/favicon.ico",
     }),
   ],
   module: {
@@ -61,6 +62,10 @@ module.exports = {
       },
       {
         test: /\.obj$/,
+        use: ["file-loader"],
+      },
+      {
+        test: /\.ico$/,
         use: ["file-loader"],
       },
     ],
