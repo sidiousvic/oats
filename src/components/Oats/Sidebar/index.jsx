@@ -38,7 +38,7 @@ export default function Sidebar() {
         role="textbox"
         className={mobileSidebarOpen ? "mobile-sidebar-open" : ""}
         tabIndex="0"
-        onKeyDown={() => {}} // TODO: Accessiblity
+        onKeyDown={() => {}} /**@todo Accessibility */
         onTouchStart={() => {
           if (!orientedLandscape) openMobileSidebar();
         }}

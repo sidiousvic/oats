@@ -24,11 +24,11 @@ export default function SidebarNote({ note: thisNote }) {
       tabIndex="0"
       noteid={thisNote.id}
       className={`sidebar-note ${isActiveNote && "active-note"}`}
-      onFocus={() => {}} // TODO: Accessiblity
+      onFocus={() => {}} /**@todo Accessibility */
       onClick={() => {
         setActiveNoteId(thisNote.id);
       }}
-      onKeyDown={() => {}} // TODO: Accessiblity
+      onKeyDown={() => {}} /**@todo Accessibility */
     >
       <h1>{truncateWithEllipsis(thisNote.title, 25)}</h1>
       <p>{truncateWithEllipsis(thisNote.body, 50)}</p>
@@ -37,7 +37,7 @@ export default function SidebarNote({ note: thisNote }) {
         role="textbox"
         tabIndex="0"
         className="button"
-        onKeyDown={() => {}} // TODO: Accessiblity
+        onKeyDown={() => {}} /**@todo Accessibility */
         onClick={() => {
           deleteNote(thisNote.id);
         }}

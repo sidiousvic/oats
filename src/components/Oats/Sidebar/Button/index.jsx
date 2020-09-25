@@ -6,7 +6,7 @@ export default function Button({ emoji, onClickHandler }) {
       role="button"
       className="button"
       tabIndex="0"
-      onKeyDown={() => {}} // TODO: Accessiblity
+      onKeyDown={() => {}} /**@todo Accessibility */
       onClick={onClickHandler}
     >
       <p>

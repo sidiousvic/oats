@@ -28,6 +28,7 @@ export default function Note() {
       updateNote(activeNoteId);
     }
   }
+
   function setNoteToCache() {
     const newNotes = notesCache.map((note) => {
       if (note.id === activeNote.id) {
