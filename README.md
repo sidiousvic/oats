@@ -29,12 +29,15 @@ yarn
 
 Bash into `psql` and create a database called `oats`.
 
+Also create a database `oats_test` for the tests to use.
+
 ```bash
 psql
 ```
 
 ```sql
 CREATE DATABASE oats;
+CREATE DATABASE oats_test;
 ```
 
 Create an `.env` file and add your `psql` credentials.

@@ -9,24 +9,69 @@ const DB_PORT = "5432";
 const DB_URL =
   process.env.DB_URL ||
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5432/oats`;
+const TEST_DB_URL =
+  process.env.DB_URL ||
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5432/oats_test`;
 
 module.exports = {
-  client: "pg",
-  connection: DB_URL || {
-    host: DB_HOST,
-    port: DB_PORT,
-    user: DB_USER,
+  prod: {
+    client: "pg",
+    connection: DB_URL || {
+      host: DB_HOST,
+      port: DB_PORT,
+      user: DB_USER
+    },
+    searchPath: "public",
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: "knex_migrations",
+      directory: MIGRATION_DIR
+    },
+    seeds: {
+      directory: SEED_DIR
+    }
   },
-  searchPath: "public",
-  pool: {
-    min: 2,
-    max: 10,
+  dev: {
+    client: "pg",
+    connection: DB_URL || {
+      host: DB_HOST,
+      port: DB_PORT,
+      user: DB_USER
+    },
+    searchPath: "public",
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: "knex_migrations",
+      directory: MIGRATION_DIR
+    },
+    seeds: {
+      directory: SEED_DIR
+    }
   },
-  migrations: {
-    tableName: "knex_migrations",
-    directory: MIGRATION_DIR,
-  },
-  seeds: {
-    directory: SEED_DIR,
-  },
+  test: {
+    client: "pg",
+    connection: TEST_DB_URL || {
+      host: DB_HOST,
+      port: DB_PORT,
+      user: DB_USER
+    },
+    searchPath: "public",
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: "knex_migrations",
+      directory: MIGRATION_DIR
+    },
+    seeds: {
+      directory: SEED_DIR
+    }
+  }
 };
