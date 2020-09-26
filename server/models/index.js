@@ -1,13 +1,16 @@
 const Knex = require("knex");
 const knexfile = require("./knexfile");
-const knex = Knex(knexfile);
+const environment = process.env.NODE_ENV || "test";
+console.log(`Running on the ${environment} environment.`);
+const configuration = knexfile[environment];
+const db = Knex(configuration);
 
-knex.migrate
+db.migrate
   .latest()
   .then(() => {
-    return knex.seed.run();
+    return db.seed.run();
   })
-  .catch((err) => {
+  .catch(err => {
     console.log(err);
     throw new Error("Could not perform migrations and seeds.");
   })
@@ -15,4 +18,4 @@ knex.migrate
     console.log("Migrations ran successfully! ✅");
   });
 
-module.exports = knex;
+module.exports = db;
