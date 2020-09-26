@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const notesRouter = require("./routers/notes.ts");
+const notesRouter = require("./routers/notes");
 
 app.use(morgan("dev"));
 app.use(

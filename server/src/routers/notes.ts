@@ -31,7 +31,7 @@ notesRouter.post("/notes", async (req, res) => {
   const incomingNewNote: Note = {
     id,
     title,
-    body,
+    body
   };
   await db("notes").insert(incomingNewNote);
   res.send(`Note with ID ${id} was added.`);
