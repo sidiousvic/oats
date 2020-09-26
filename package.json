@@ -9,11 +9,12 @@
   "homepage": "https://sidiousvic.dev/oats",
   "proxy": "http://localhost:9990",
   "scripts": {
-    "start": "NODE_ENV=prod pm2 start server/index.js --name sidiousvic.dev/oats",
+    "start": "npm run build:server && NODE_ENV=prod pm2 start server/build/index.js --name sidiousvic.dev/oats",
     "start:dev": "NODE_ENV=dev ts-node-dev server",
     "start:test": "NODE_ENV=test ts-node-dev server",
     "dev": "webpack-dev-server",
     "build": "webpack",
+    "build:server": "tsc --project server/tsconfig.json",
     "test": "jest",
     "lint": "eslint --fix --ext .js,.jsx .",
     "migrate": "knex migrate:latest --knexfile models/knexfile.js",
