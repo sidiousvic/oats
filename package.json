@@ -9,17 +9,22 @@
   "homepage": "https://sidiousvic.dev/oats",
   "proxy": "http://localhost:9990",
   "scripts": {
-    "start": "npm run build:server && NODE_ENV=prod pm2 start server/build/index.js --name sidiousvic.dev/oats",
-    "start:dev": "NODE_ENV=dev ts-node-dev server",
-    "start:test": "NODE_ENV=test ts-node-dev server",
-    "dev": "webpack-dev-server",
-    "build": "webpack",
-    "build:server": "tsc --project server/tsconfig.json",
-    "test": "jest",
-    "lint": "eslint --fix --ext .js,.jsx .",
-    "migrate": "knex migrate:latest --knexfile models/knexfile.js",
-    "seed": "knex seed:run --knexfile models/knexfile.js",
-    "rollback": "knex migrate:rollback --knexfile models/knexfile.js"
+    "//": "⇣FIRE⇣",
+    "fire": "npm run build:s && NODE_ENV=prod pm2 start server/build/index.js --name sidiousvic.dev/oats",
+    "//": "⇣UI⇣",
+    "u:build": "webpack",
+    "u:dev": "webpack-dev-server",
+    "u:test": "jest",
+    "//": "⇣SERVER⇣",
+    "s:build": "tsc --project server/tsconfig.json",
+    "s:dev": "NODE_ENV=dev ts-node-dev server/src",
+    "s:test": "NODE_ENV=test ts-node-dev server",
+    "//": "⇣DATABASE⇣",
+    "db:migrate": "knex migrate:latest --knexfile models/knexfile.js",
+    "db:seed": "knex seed:run --knexfile models/knexfile.js",
+    "db:rollback": "knex migrate:rollback --knexfile models/knexfile.js",
+    "//": "⇣LINT⇣",
+    "lint": "eslint --fix --ext .js,.jsx ."
   },
   "resolutions": {
     "@babel/preset-env": "7.5.5"
