@@ -10,7 +10,7 @@
   "proxy": "http://localhost:9990",
   "scripts": {
     "//": "⇣FIRE⇣",
-    "fire": "npm run build:s && NODE_ENV=prod pm2 start server/build/index.js --name sidiousvic.dev/oats",
+    "fire": "npm run s:build && NODE_ENV=prod pm2 start server/build/index.js --name sidiousvic.dev/oats",
     "//": "⇣UI⇣",
     "u:build": "webpack",
     "u:dev": "webpack-dev-server",
