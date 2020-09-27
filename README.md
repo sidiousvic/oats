@@ -73,4 +73,4 @@ Hack away! 👽👍🏼🔥
 
 <br>
 
-Questions? 👉🏼 `sidiousvic@gmail.dev`
+Questions? 👉🏼 `vic@sidiousvic.dev`
