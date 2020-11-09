@@ -13,7 +13,7 @@ export default function Oats() {
   const [savedNotesAt, setSavedNotesAt] = useState(Date.now());
 
   function getActiveNote(id) {
-    const activeNote = notesCache.find((note) => note.id === id);
+    const activeNote = notesCache.find(note => note.id === id);
     return activeNote;
   }
 
@@ -23,13 +23,6 @@ export default function Oats() {
         setActiveNoteId(notesCache[notesCache.length - 1].id);
       else setActiveNoteId("0");
     },
-    /**@todo: Satisfy exhaustive deps rule
-     * This effect should run when notesCache's length changes only.
-     * eslint suggests to add notesCache as a dependency to avoid using stale notesCache data,
-     * since this doesn't depend on notesCache itself,
-     * we cannot be sure whether notesCache has changed across renders.
-     */
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [notesCache.length]
   );
 
@@ -47,7 +40,7 @@ export default function Oats() {
     const newNote = {
       id: uuidv4(),
       title: "New note.",
-      body: "This is a new note.",
+      body: "This is a new note."
     };
     await axios.post(`/oats/notes`, newNote);
     setNotesCache([...notesCache, newNote]);
@@ -55,7 +48,7 @@ export default function Oats() {
 
   async function deleteNote(id) {
     await axios.delete(`/oats/notes/${id}`);
-    setNotesCache(notesCache.filter((note) => note.id !== id));
+    setNotesCache(notesCache.filter(note => note.id !== id));
     setSavedNotesAt(Date.now());
   }
 
@@ -64,7 +57,7 @@ export default function Oats() {
     const activeNote = getActiveNote(id);
     await axios.patch(`/oats/notes/${id}`, activeNote);
     setNotesCache(
-      notesCache.map((note) => {
+      notesCache.map(note => {
         if (note.id === id) return activeNote;
         else return note;
       })
@@ -82,7 +75,7 @@ export default function Oats() {
     getActiveNote,
     addNote,
     deleteNote,
-    updateNote,
+    updateNote
   };
 
   return (

@@ -5,7 +5,7 @@ const notesRouter = require("./routers/notes");
 
 app.use(morgan("dev"));
 app.use(
-  "/oats",
+  "/projects/oats",
   express.json(),
   express.urlencoded({ extended: true }),
   notesRouter
